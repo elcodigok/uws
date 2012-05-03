@@ -8,7 +8,13 @@ AUTHOR = "Daniel M. Maldonado"
 SITE = "http://caceriadespammers.blogspot.com"
 ML = "uws@elcodigok.com.ar"
 
+CLI_PROMPT = 'uws> '
+
 # Expresiones Regulares
 MAIL_REGEX  = r'[\w\-][\w\-\.]+@[\w\-][\w\-\.]+[a-zA-Z]{1,4}'
 
 GENERAL_IP_ADDRESS_REGEX = r'\A\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\Z'
+
+SET_OPTIONS = [ 'url', 'verbose' ]
+
+SHOW_OPTIONS = [ 'url', 'verbose', 'options' ]
