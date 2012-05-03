@@ -89,6 +89,7 @@ class CLI(cmd.Cmd):
 			greeting = "hello, " + person
 		else:
 			greeting = 'hello'
+
 		print greeting
 	
 	def complete_set(self, text, line, begix, endidx):
@@ -102,9 +103,11 @@ class CLI(cmd.Cmd):
 		return completions
 
 	def help_set(self):
-		print '\n'.join(['set [variable] [valor]',
-						'[variable]', 'url, verbose',
-						'[valor]', 'http://www.elcodigok.com.ar'])
+		print '\n'.join(['\nUsage:', 
+						'\tset url <URL site>', 
+						'\tset verbose <True | False>', 
+						'\nDescription:',
+						'\tConfigure url and mode verbose.'])
 
 
 #web = urllib2.urlopen("http://code.google.com/p/python-twitter/")
