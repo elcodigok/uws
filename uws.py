@@ -72,8 +72,10 @@ class CLI(cmd.Cmd):
 		print "runnnnnnnnnn"
 
 	def help_run(self):
-		print '\n'.join([ 'run ',
-                           'Execute search user web.',
+		print '\n'.join([ '\nUsage:', 
+						   '\trun ',
+						   '\nDescription:',
+                           '\tExecute User Web Scan for value set.\n',
                            ])
 
 	def do_quit(self, line):
@@ -107,7 +109,7 @@ class CLI(cmd.Cmd):
 						'\tset url <URL site>', 
 						'\tset verbose <True | False>', 
 						'\nDescription:',
-						'\tConfigure url and mode verbose.'])
+						'\tConfigure url and mode verbose.\n'])
 
 
 #web = urllib2.urlopen("http://code.google.com/p/python-twitter/")
