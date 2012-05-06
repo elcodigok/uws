@@ -17,6 +17,6 @@ GENERAL_IP_ADDRESS_REGEX = r'\A\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\Z'
 
 SET_OPTIONS = [ 'url', 'verbose' ]
 
-SET_ORDER = [ 'set', 'get' ]
+SHOW_ORDER = [ 'set', 'get' ]
 
 SHOW_OPTIONS = [ 'url', 'verbose', 'options' ]

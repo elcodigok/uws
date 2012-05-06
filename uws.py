@@ -41,11 +41,12 @@ class Parser:
 	def checkParameter(self, parameter):
 		self.parameter = parameter
 		# value 0 => command
-		print self.parameter[0]
-		# value 1 => order
-		print self.parameter[1]
-		# value 2..n => value
-		print self.parameter[2]
+		if (self.parameter[0] in SET_OPTIONS):
+			# value 1 => order
+			if (self.parameter[1] in SHOW_ORDER):
+				# value 2..n => value
+				print self.parameter[2]
+				return True
 
 class CLI(cmd.Cmd):
   
@@ -108,6 +109,8 @@ class CLI(cmd.Cmd):
 		else:
 			greeting = 'hello'
 
+		p = Parser()
+		print p.checkParameter(self.lastcmd.split())
 		print greeting
 	
 	def complete_set(self, text, line, begix, endidx):
@@ -126,7 +129,35 @@ class CLI(cmd.Cmd):
 						'\tset verbose <True | False>', 
 						'\nDescription:',
 						'\tConfigure url and mode verbose.\n'])
+	
+	def do_get(self, person):
+		if person and person in SET_OPTIONS:
+			greeting = 'hi, %s!' % person
+		elif person:
+			greeting = "hello, " + person
+		else:
+			greeting = 'hello'
 
+		p = Parser()
+		print p.checkParameter(self.lastcmd.split())
+		print greeting
+	
+	def complete_get(self, text, line, begix, endidx):
+		if not text:
+			completions = SET_OPTIONS[:]
+		else:
+			completions = [ f
+							for f in SET_OPTIONS
+							if f.startswith(text)
+							]
+		return completions
+
+	def help_get(self):
+		print '\n'.join(['\nUsage:', 
+						'\tget url', 
+						'\tset verbose', 
+						'\nDescription:',
+						'\tConfigure url and mode verbose.\n'])
 
 #web = urllib2.urlopen("http://code.google.com/p/python-twitter/")
 #html = web.read()
