@@ -34,6 +34,19 @@ class Configure:
 		self.verbose = state
 
 
+class Parser:
+	def __init__(self):
+		self.parameter = None
+	
+	def checkParameter(self, parameter):
+		self.parameter = parameter
+		# value 0 => command
+		print self.parameter[0]
+		# value 1 => order
+		print self.parameter[1]
+		# value 2..n => value
+		print self.parameter[2]
+
 class CLI(cmd.Cmd):
   
 	def __init__(self):
@@ -56,6 +69,9 @@ class CLI(cmd.Cmd):
 			greeting = self.uws.getUrl()
 		else:
 			greeting = 'hello'
+
+		p = Parser()
+		p.checkParameter(self.lastcmd.split())
 		print greeting
 	
 	def complete_show(self, text, line, begix, endidx):
