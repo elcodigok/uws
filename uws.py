@@ -37,16 +37,23 @@ class Configure:
 class Parser:
 	def __init__(self):
 		self.parameter = None
+		self.valid = False
 	
 	def checkParameter(self, parameter):
 		self.parameter = parameter
 		# value 0 => command
-		if (self.parameter[0] in SET_OPTIONS):
+		if (self.parameter[0] in SHOW_ORDER):
 			# value 1 => order
-			if (self.parameter[1] in SHOW_ORDER):
+			if (self.parameter[1] in SET_OPTIONS):
 				# value 2..n => value
 				print self.parameter[2]
-				return True
+				self.valid = True
+			else:
+				self.valid = False
+		else:
+			self.valid = False
+		
+		return self.valid
 
 class CLI(cmd.Cmd):
   
