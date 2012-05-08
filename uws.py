@@ -6,54 +6,9 @@ import sys
 import string
 import urllib2
 
+from configure import Configure
+from parser import Parser
 from settings import *
-
-class Configure:
-
-	def __init__(self):
-		self.url = None
-		self.verbose = False
-		self.html = None
-
-	def getUrl(self):
-		return self.url
-
-	def setUrl(self, url):
-		self.url = url
-	
-	def getWeb(self):
-		web = urllib2.urlopen(self.getUrl())
-		self.html = web.read()
-		web.close()
-		return self.html
-
-	def getVerbose(self):
-		return self.verbose
-
-	def setVerbose(self, state):
-		self.verbose = state
-
-
-class Parser:
-	def __init__(self):
-		self.parameter = None
-		self.valid = False
-	
-	def checkParameter(self, parameter):
-		self.parameter = parameter
-		# value 0 => command
-		if (self.parameter[0] in SHOW_ORDER):
-			# value 1 => order
-			if (self.parameter[1] in SET_OPTIONS):
-				# value 2..n => value
-				print self.parameter[2]
-				self.valid = True
-			else:
-				self.valid = False
-		else:
-			self.valid = False
-		
-		return self.valid
 
 class CLI(cmd.Cmd):
   
@@ -118,6 +73,7 @@ class CLI(cmd.Cmd):
 
 		p = Parser()
 		print p.checkParameter(self.lastcmd.split())
+		print p.countParameter(self.lastcmd.split())
 		print greeting
 	
 	def complete_set(self, text, line, begix, endidx):
