@@ -6,9 +6,9 @@ import sys
 import string
 import urllib2
 
-from configure import Configure
-from parser import Parser
-from settings import *
+from config.configure import Configure
+from lib.parser import Parser
+from config.settings import *
 
 class CLI(cmd.Cmd):
   
