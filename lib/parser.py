@@ -26,3 +26,6 @@ class Parser:
 	def countParameter(self, parameter = []):
 		self.parameter = parameter
 		return len(self.parameter)
+	
+	def returnParameter(self, index):
+		return self.parameter[index]

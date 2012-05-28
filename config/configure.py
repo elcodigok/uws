@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import urllib2
+
 class Configure:
 
 	def __init__(self):

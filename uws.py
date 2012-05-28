@@ -31,7 +31,7 @@ class CLI(cmd.Cmd):
 		elif line:
 			greeting = self.uws.getUrl()
 		else:
-			greeting = 'hello'
+			greeting = 'URL\t=>\t' + self.uws.getUrl()
 
 		p = Parser()
 		p.checkParameter(self.lastcmd.split())
@@ -48,7 +48,9 @@ class CLI(cmd.Cmd):
 		return completions
 	
 	def do_run(self, line):
-		print "runnnnnnnnnn"
+		self.mailExp = re.compile(MAIL_REGEX)
+		self.mailList = self.mailExp.findall(self.uws.getWeb())
+		print self.mailList
 
 	def help_run(self):
 		print '\n'.join([ '\nUsage:', 
@@ -73,6 +75,8 @@ class CLI(cmd.Cmd):
 
 		p = Parser()
 		print p.checkParameter(self.lastcmd.split())
+		if (p.checkParameter(self.lastcmd.split()) == True):
+			self.uws.setUrl(p.returnParameter(2))
 		print p.countParameter(self.lastcmd.split())
 		print greeting
 	
@@ -118,7 +122,7 @@ class CLI(cmd.Cmd):
 	def help_get(self):
 		print '\n'.join(['\nUsage:', 
 						'\tget url', 
-						'\tset verbose', 
+						'\tget verbose', 
 						'\nDescription:',
 						'\tConfigure url and mode verbose.\n'])
 
