@@ -5,7 +5,7 @@ VERSION = "0.1"
 VERSION_STRING = "Users Web Scan v%s" % (VERSION)
 DESCRIPTION = "Search tool users information."
 AUTHOR = "Daniel M. Maldonado"
-SITE = "http://caceriadespammers.blogspot.com"
+SITE = "http://caceriadespammers.com.ar"
 ML = "uws@elcodigok.com.ar"
 
 CLI_PROMPT = 'uws> '
