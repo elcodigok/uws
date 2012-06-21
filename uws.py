@@ -50,7 +50,8 @@ class CLI(cmd.Cmd):
 	def do_run(self, line):
 		self.mailExp = re.compile(MAIL_REGEX)
 		self.mailList = self.mailExp.findall(self.uws.getWeb())
-		print self.mailList
+		self.mailListDebug = list(set(self.mailList))
+		print self.mailListDebug
 
 	def help_run(self):
 		print '\n'.join([ '\nUsage:', 
@@ -93,9 +94,10 @@ class CLI(cmd.Cmd):
 	def help_set(self):
 		print '\n'.join(['\nUsage:', 
 						'\tset url <URL site>', 
+						'\tset search <email | google | twitter | facebook>',
 						'\tset verbose <True | False>', 
 						'\nDescription:',
-						'\tConfigure url and mode verbose.\n'])
+						'\tConfigure url scan and mode verbose.\n'])
 	
 	def do_get(self, person):
 		if person and person in SET_OPTIONS:
